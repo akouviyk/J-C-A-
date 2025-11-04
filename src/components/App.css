@@ -1,0 +1,254 @@
+.App {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Section dividers */
+.section-divider {
+  margin: 8rem 0;
+  opacity: 0.5;
+}
+
+/* Process Section */
+.process-section {
+  padding: 12rem 5rem 10rem;
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 100%
+  );
+}
+
+.process-container {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.process-title {
+  text-align: center;
+  margin-bottom: 10rem;
+  color: var(--black);
+  font-weight: 100;
+  letter-spacing: 0.6em;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 3rem;
+}
+
+.process-item {
+  padding: 4rem 3rem;
+  position: relative;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 0.5px solid var(--subtle);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.process-item:hover {
+  transform: translateY(-8px);
+  border-color: var(--gray-400);
+}
+
+.process-number {
+  font-size: 1rem;
+  color: var(--gray-400);
+  opacity: 0.4;
+  margin-bottom: 2rem;
+  font-weight: 200;
+  letter-spacing: 0.3em;
+}
+
+.process-name {
+  font-size: 0.8rem;
+  color: var(--black);
+  letter-spacing: 0.35em;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.process-description {
+  font-size: 0.75rem;
+  line-height: 2.2;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  font-weight: 300;
+}
+
+/* Statement Section */
+.statement-section {
+  padding: 12rem 5rem;
+  background: var(--bg-secondary);
+  position: relative;
+}
+
+.statement-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  padding: 6rem 4rem;
+  border: 0.5px solid var(--subtle);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+}
+
+.statement-arch {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px;
+  pointer-events: none;
+}
+
+.statement-quote {
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.quote-text {
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  line-height: 2.5;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+  margin-bottom: 4rem;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.quote-author {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--black);
+  letter-spacing: 0.4em;
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.quote-details {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.25em;
+  opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .process-section,
+  .statement-section {
+    padding: 10rem 3rem 8rem;
+  }
+
+  .process-title {
+    margin-bottom: 8rem;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .statement-container {
+    padding: 5rem 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .process-section,
+  .statement-section {
+    padding: 8rem 2rem 6rem;
+  }
+
+  .process-title {
+    margin-bottom: 6rem;
+    letter-spacing: 0.4em;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .process-item {
+    padding: 3rem 2rem;
+  }
+
+  .statement-container {
+    padding: 4rem 2rem;
+  }
+
+  .statement-arch {
+    top: -80px;
+    max-width: 600px;
+  }
+
+  .quote-text {
+    line-height: 2.2;
+  }
+
+  .section-divider {
+    margin: 6rem 0;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus states */
+*:focus-visible {
+  outline: 0.5px solid var(--gray-400);
+  outline-offset: 4px;
+}
+
+/* Animation utilities */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Print styles */
+@media print {
+  .precision-grid,
+  .navigation,
+  .footer {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .glass-minimal {
+    background: white;
+    border: 0.5px solid black;
+  }
+
+  .process-item,
+  .statement-container {
+    break-inside: avoid;
+  }
+}

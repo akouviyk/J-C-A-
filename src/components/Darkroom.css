@@ -1,0 +1,412 @@
+.darkroom {
+  min-height: 100vh;
+  padding: 8rem 3rem 4rem;
+  position: relative;
+  background: #050505;
+}
+
+/* Safelight effect */
+.safelight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(139, 0, 0, 0.15) 0%,
+    rgba(139, 0, 0, 0.05) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+  transition: all 2s ease;
+}
+
+.safelight.exposed {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(139, 0, 0, 0.25) 0%,
+    rgba(139, 0, 0, 0.1) 50%,
+    transparent 100%
+  );
+}
+
+.darkroom-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.darkroom-header {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.darkroom-title {
+  font-size: clamp(3rem, 10vw, 7rem);
+  color: var(--darkroom-red);
+  margin-bottom: 1rem;
+  text-shadow: 0 0 30px rgba(139, 0, 0, 0.5);
+}
+
+.darkroom-subtitle {
+  font-size: 0.9rem;
+  letter-spacing: 0.3em;
+  color: var(--text-secondary);
+}
+
+.safelight-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.indicator-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--darkroom-red);
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.6);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.9); }
+}
+
+.indicator-text {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--darkroom-red);
+}
+
+/* Process Timeline */
+.process-timeline {
+  padding: 3rem;
+  margin-bottom: 4rem;
+  border: 1px solid rgba(139, 0, 0, 0.3);
+}
+
+.timeline-title {
+  font-size: 1.8rem;
+  color: var(--darkroom-red);
+  margin-bottom: 3rem;
+  letter-spacing: 0.2em;
+}
+
+.timeline-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.timeline-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: start;
+  position: relative;
+}
+
+.step-number {
+  font-size: 2rem;
+  color: var(--darkroom-red);
+  opacity: 0.6;
+  min-width: 60px;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.step-name {
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  letter-spacing: 0.15em;
+}
+
+.step-time {
+  font-size: 0.85rem;
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+}
+
+.step-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.step-connector {
+  position: absolute;
+  left: 30px;
+  top: 3rem;
+  bottom: -2rem;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    rgba(139, 0, 0, 0.3),
+    transparent
+  );
+}
+
+/* Exposure Simulator */
+.exposure-simulator {
+  padding: 3rem;
+  margin-bottom: 4rem;
+  border: 1px solid rgba(139, 0, 0, 0.3);
+}
+
+.simulator-title {
+  font-size: 1.8rem;
+  color: var(--darkroom-red);
+  margin-bottom: 1rem;
+  letter-spacing: 0.2em;
+}
+
+.simulator-description {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+}
+
+.simulator-controls {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.expose-button {
+  padding: 1rem 3rem;
+  background: transparent;
+  color: var(--darkroom-red);
+  border: 2px solid var(--darkroom-red);
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  transition: all 0.3s ease;
+}
+
+.expose-button:hover:not(:disabled) {
+  background: var(--darkroom-red);
+  color: var(--primary-bg);
+  box-shadow: 0 0 30px rgba(139, 0, 0, 0.4);
+}
+
+.expose-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.develop-timer {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.timer-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+}
+
+.timer-value {
+  font-size: 1.5rem;
+  color: var(--darkroom-red);
+  font-weight: bold;
+}
+
+.simulator-display {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #000;
+  border: 2px solid rgba(139, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.pre-exposure,
+.developing-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paper-blank {
+  width: 80%;
+  height: 80%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(139, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paper-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.developed-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.development-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.developing-label {
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+  color: var(--darkroom-red);
+  text-shadow: 0 0 10px rgba(139, 0, 0, 0.8);
+}
+
+/* Chemistry Section */
+.chemistry-section {
+  margin-bottom: 4rem;
+}
+
+.chemistry-title {
+  font-size: 1.8rem;
+  color: var(--darkroom-red);
+  margin-bottom: 2rem;
+  letter-spacing: 0.2em;
+}
+
+.chemistry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.chemical-card {
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid rgba(139, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.chemical-card:hover {
+  border-color: var(--darkroom-red);
+  box-shadow: 0 10px 30px rgba(139, 0, 0, 0.2);
+}
+
+.chemical-icon {
+  font-size: 3rem;
+  font-family: 'Orbitron', monospace;
+  color: var(--darkroom-red);
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.chemical-name {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: 0.15em;
+}
+
+.chemical-formula {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* Equipment Section */
+.equipment-section {
+  padding: 3rem;
+  border: 1px solid rgba(139, 0, 0, 0.3);
+}
+
+.equipment-title {
+  font-size: 1.8rem;
+  color: var(--darkroom-red);
+  margin-bottom: 2rem;
+  letter-spacing: 0.2em;
+}
+
+.equipment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.equipment-item {
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(139, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.equipment-item:hover {
+  color: var(--text-primary);
+  transform: translateX(10px);
+}
+
+.eq-bullet {
+  color: var(--darkroom-red);
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .darkroom {
+    padding: 6rem 1.5rem 3rem;
+  }
+
+  .process-timeline,
+  .exposure-simulator,
+  .equipment-section {
+    padding: 2rem;
+  }
+
+  .timeline-step {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .step-connector {
+    display: none;
+  }
+
+  .chemistry-grid {
+    grid-template-columns: 1fr;
+  }
+}

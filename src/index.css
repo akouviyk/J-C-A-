@@ -1,0 +1,417 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --gray-100: #f8f8f8;
+  --gray-200: #e0e0e0;
+  --gray-300: #c0c0c0;
+  --gray-400: #909090;
+  --gray-500: #606060;
+  --gray-600: #404040;
+  --gray-700: #282828;
+  --gray-800: #1a1a1a;
+  --gray-900: #0a0a0a;
+
+  /* Minimal palette - Light Mode */
+  --bg-primary: #fafafa;
+  --bg-secondary: #ffffff;
+  --text-primary: #0a0a0a;
+  --text-secondary: #606060;
+  --accent: #000000;
+  --subtle: #e0e0e0;
+}
+
+/* Dark Mode */
+[data-theme='dark'] {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --text-primary: #fafafa;
+  --text-secondary: #909090;
+  --accent: #ffffff;
+  --subtle: #404040;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Arial',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+/* Custom scrollbar - minimal */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-300);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-500);
+}
+
+::selection {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* Architectural arch overlays */
+.arch-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.03;
+}
+
+/* Subtle grid for precision */
+.precision-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.015;
+  background-image: linear-gradient(var(--gray-300) 0.5px, transparent 0.5px),
+    linear-gradient(90deg, var(--gray-300) 0.5px, transparent 0.5px);
+  background-size: 100px 100px;
+}
+
+/* Dimensional lighting effects */
+.light-dimension {
+  position: relative;
+}
+
+.light-dimension::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.4) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.light-dimension:hover::before {
+  opacity: 1;
+}
+
+/* Shadow dimensions */
+.shadow-dimension {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.shadow-dimension::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02), 0 8px 16px rgba(0, 0, 0, 0.03),
+    0 16px 32px rgba(0, 0, 0, 0.04);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.shadow-dimension:hover::after {
+  opacity: 1;
+}
+
+/* Elongated elegant typography */
+.elongated {
+  font-weight: 200;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  line-height: 1.8;
+}
+
+.elegant-title {
+  font-weight: 100;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.4;
+}
+
+.refined-text {
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  line-height: 2;
+  color: #ddd;
+}
+
+/* Arch shapes - architectural element */
+.arch-shape {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 1px solid var(--subtle);
+  border-radius: 50% 50% 0 0;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Diagram lines */
+.diagram-line {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--gray-300) 50%,
+    transparent 100%
+  );
+  opacity: 0.3;
+}
+
+/* Minimal glass effect */
+.glass-minimal {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 0.5px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Depth layers */
+.layer-1 {
+  position: relative;
+  z-index: 10;
+  transform: translateZ(10px);
+}
+
+.layer-2 {
+  position: relative;
+  z-index: 20;
+  transform: translateZ(20px);
+}
+
+.layer-3 {
+  position: relative;
+  z-index: 30;
+  transform: translateZ(30px);
+}
+
+/* Minimal hover reveal */
+.hover-minimal {
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0.6;
+}
+
+.hover-minimal:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* Artsy shapes - creative visual dimension */
+.abstract-shape {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+}
+
+.circle-abstract {
+  width: 300px;
+  height: 300px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.rect-abstract {
+  width: 200px;
+  height: 300px;
+  border: 1px solid currentColor;
+  transform: rotate(15deg);
+}
+
+/* Light beam effect */
+.light-beam {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  animation: beamMove 8s ease-in-out infinite;
+}
+
+@keyframes beamMove {
+  0%,
+  100% {
+    transform: translateX(0) scaleY(0.8);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translateX(100px) scaleY(1);
+    opacity: 0.3;
+  }
+}
+
+/* Dimension reflection */
+.reflection {
+  position: relative;
+}
+
+.reflection::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.03) 0%,
+    transparent 100%
+  );
+  transform: scaleY(-1);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.reflection:hover::after {
+  opacity: 1;
+}
+
+/* Minimal border accent */
+.border-accent {
+  position: relative;
+}
+
+.border-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0.5px;
+  background: var(--black);
+  transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.border-accent:hover::before {
+  width: 100%;
+}
+
+/* Slick minimal animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes drawLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Architectural dimension markers */
+.dimension-marker {
+  position: absolute;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--gray-400);
+  font-weight: 300;
+}
+
+/* Perspective depth */
+.perspective-container {
+  perspective: 2000px;
+  transform-style: preserve-3d;
+}
+
+.depth-card {
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.depth-card:hover {
+  transform: rotateY(2deg) rotateX(-2deg) translateZ(20px);
+}
+
+/* Minimal focus states */
+button:focus,
+a:focus {
+  outline: 1px solid var(--gray-300);
+  outline-offset: 4px;
+}
+
+/* Print optimization */
+@media print {
+  .arch-overlay,
+  .precision-grid {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

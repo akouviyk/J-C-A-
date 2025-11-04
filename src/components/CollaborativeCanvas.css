@@ -1,0 +1,231 @@
+.collaborative-canvas {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.98);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.canvas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(20px);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.canvas-title {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.active-users {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.user-count {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 0.5rem;
+}
+
+.close-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.canvas-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.tools-sidebar {
+  width: 200px;
+  background: rgba(26, 26, 26, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tool-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tool-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.5rem;
+}
+
+.tool-btn,
+.upload-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  text-align: left;
+}
+
+.tool-btn:hover,
+.upload-btn:hover {
+  border-color: rgba(0, 255, 136, 0.4);
+  color: #00ff88;
+  background: rgba(0, 255, 136, 0.05);
+}
+
+.tool-btn.active {
+  border-color: #00ff88;
+  color: #00ff88;
+  background: rgba(0, 255, 136, 0.1);
+}
+
+.upload-btn {
+  display: block;
+  text-align: center;
+}
+
+.canvas-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+.canvas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.loading-state,
+.empty-state {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.loading-text,
+.empty-text {
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.empty-icon {
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 1rem;
+}
+
+.empty-subtext {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.3);
+  margin-top: 0.5rem;
+}
+
+.contribution-item {
+  background: rgba(26, 26, 26, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.contribution-item:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(26, 26, 26, 0.8);
+}
+
+.contrib-type {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: #00ff88;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.contrib-author {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0.25rem;
+}
+
+.contrib-time {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+  .tools-sidebar {
+    width: 60px;
+    padding: 1rem 0.5rem;
+  }
+
+  .tool-label {
+    display: none;
+  }
+
+  .tool-btn span,
+  .upload-btn span {
+    font-size: 0.6rem;
+    writing-mode: vertical-rl;
+  }
+
+  .canvas-grid {
+    grid-template-columns: 1fr;
+  }
+}

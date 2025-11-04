@@ -1,0 +1,44 @@
+{
+  "name": "jack-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "homepage": "https://YOUR_USERNAME.github.io/YOUR_REPO_NAME",
+  "dependencies": {
+    "firebase": "^10.7.1",
+    "framer-motion": "^10.16.16",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "react-scripts": "5.0.1",
+    "reactronica": "^0.8.1-canary.0",
+    "tone": "^15.1.22"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.0"
+  }
+}
