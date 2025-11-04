@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/YOUR_REPO_NAME/static/css/main.fc450e51.css",
+    "main.js": "/YOUR_REPO_NAME/static/js/main.92594bdf.js",
+    "index.html": "/YOUR_REPO_NAME/index.html",
+    "main.fc450e51.css.map": "/YOUR_REPO_NAME/static/css/main.fc450e51.css.map",
+    "main.92594bdf.js.map": "/YOUR_REPO_NAME/static/js/main.92594bdf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fc450e51.css",
+    "static/js/main.92594bdf.js"
+  ]
+}
